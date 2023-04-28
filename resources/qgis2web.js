@@ -106,10 +106,20 @@ var map = new ol.Map({
 
 var layerSwitcher = new ol.control.LayerSwitcher({tipLabel: "Layers"});
 map.addControl(layerSwitcher);
-layerSwitcher.hidePanel = function() {};
-layerSwitcher.showPanel();
 
+    var searchLayer = new SearchLayer({
+      layer: lyr_Finalestimatedpoints_42,
+      colName: 'layer',
+      zoom: 10,
+      collapsed: true,
+      map: map
+    });
 
+    map.addControl(searchLayer);
+    document.getElementsByClassName('search-layer')[0]
+    .getElementsByTagName('button')[0].className +=
+    ' fa fa-binoculars';
+    
 map.getView().fit([9271130.554370, 2003328.941699, 9276657.701991, 2007458.586553], map.getSize());
 
 var NO_POPUP = 0
